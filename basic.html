@@ -1,0 +1,32 @@
+<html>
+<head>
+<script>
+function click()
+{
+var http=new XMLHttpRequest();
+document.getElementById("txtHint").innerHTML="working";
+http.onreadystatechange=function()
+{
+	if(this.readyState == 4 && status == 200)
+	{
+		document.getElementById("txtHint").innerHTML= this.responseText;
+	}
+};
+var str=document.getElementById("input_text").value;
+http.open("GET","test_ajax.php?q="+str,true);
+http.send();
+}
+</script> 
+<body>
+<h1>MY FIRST AJAX PROGRAM</h1>
+<p id= "demo"></p>
+<br><br>
+<form> 
+NAME:<input type="text" id="input_text">
+<button onclick="click()">click me</button>
+
+</form>
+<p>value: <span id="txtHint"></span></p>
+</body>
+</head>
+</html>
